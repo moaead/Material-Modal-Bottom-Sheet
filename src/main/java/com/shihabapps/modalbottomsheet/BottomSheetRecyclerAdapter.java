@@ -78,7 +78,11 @@ public class BottomSheetRecyclerAdapter extends RecyclerView.Adapter<BottomSheet
         }
 
         public void bind(final int position, final BottomSheetItemOnClickListener onClickListener) {
-            itemView.findViewById(R.id.bottom_sheet_single_image_and_text).setOnClickListener(new View.OnClickListener() {
+            View childLinear = itemView.findViewById(R.id.bottom_sheet_single_image_and_text);
+            if (childLinear == null)
+                childLinear = itemView;
+
+            childLinear.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     onClickListener.onClick(position);
