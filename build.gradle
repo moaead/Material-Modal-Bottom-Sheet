@@ -1,5 +1,30 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'modal-bottom-sheet'
+
+    publishedGroupId = 'com.shihabapps.modal-bottom-sheet'
+    libraryName = 'modal-bottom-sheet'
+    artifact = 'modal-bottom-sheet'
+
+    libraryDescription = 'Material Design Bottom Sheet Vertical and Horizontal'
+
+    siteUrl = 'https://github.com/moaead/Material-Modal-Bottom-Sheet'
+    gitUrl = 'https://github.com/moaead/Material-Modal-Bottom-Sheet.git'
+
+    libraryVersion = '0.1'
+
+    developerId = 'moaead'
+    developerName = 'Moaead Yahya'
+    developerEmail = 'moaeadwork@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
@@ -25,3 +50,5 @@ dependencies {
     compile 'com.android.support:design:24.2.0'
     compile 'com.android.support:recyclerview-v7:24.2.0'
 }
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
