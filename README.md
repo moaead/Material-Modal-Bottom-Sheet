@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.shihabapps.modal-bottom-sheet:modal-bottom-sheet:0.1'
+    compile 'com.shihabapps.moaead:modal-bottom-sheet:0.1'
 }
 
 ```

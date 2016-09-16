@@ -4,7 +4,7 @@ ext {
     bintrayRepo = 'maven'
     bintrayName = 'modal-bottom-sheet'
 
-    publishedGroupId = 'com.shihabapps.modal-bottom-sheet'
+    publishedGroupId = 'com.shihabapps.moaead'
     libraryName = 'modal-bottom-sheet'
     artifact = 'modal-bottom-sheet'
 
