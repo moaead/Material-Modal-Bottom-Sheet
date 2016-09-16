@@ -1,0 +1,20 @@
+<resources>
+    <dimen name="bottom_sheet_title_height">56dp</dimen>
+    <dimen name="bottom_sheet_list_vertical_margin">8dp</dimen>
+    <dimen name="bottom_sheet_title_horizontal_margin">16dp</dimen>
+    <dimen name="bottom_sheet_title_font_size">16sp</dimen>
+    <dimen name="bottom_sheet_item_icon_right_margin">16dp</dimen>
+    <dimen name="bottom_sheet_item_text_left_margin">16dp</dimen>
+    <dimen name="bottom_sheet_divider_bottom_margin">8dp</dimen>
+    <dimen name="bottom_sheet_divider_top_margin">7dp</dimen>
+    <dimen name="bottom_sheet_divider_height">1dp</dimen>
+    <dimen name="bottom_sheet_item_height">48dp</dimen>
+    <dimen name="bottom_sheet_item_horizontal_padding">16dp</dimen>
+
+
+    <dimen name="bottom_sheet_grid_item_horizontal_padding">24dp</dimen>
+    <dimen name="bottom_sheet_grid_item_vertical_padding">16dp</dimen>
+
+    <dimen name="bottom_sheet_grid_top_margin">16dp</dimen>
+    <dimen name="bottom_sheet_grid_bottom_margin">24dp</dimen>
+</resources>

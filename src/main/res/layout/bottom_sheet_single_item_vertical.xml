@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_sheet_item_height"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/bottom_sheet_item_horizontal_padding"
+        android:paddingRight="@dimen/bottom_sheet_item_horizontal_padding">
+
+        <ImageView
+            android:id="@+id/bottom_sheet_single_title_image_view"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="@dimen/bottom_sheet_item_icon_right_margin"
+            android:layout_marginRight="@dimen/bottom_sheet_item_icon_right_margin"
+            android:contentDescription="@string/bottom_sheet_icon_content_description"/>
+
+        <TextView
+            android:id="@+id/bottom_sheet_single_title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/bottom_sheet_item_text_left_margin"
+            android:layout_marginStart="@dimen/bottom_sheet_item_text_left_margin"
+            android:textColor="@color/bottom_sheet_text_color"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/bottom_sheet_single_title_divider_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_sheet_divider_height"
+        android:layout_marginBottom="@dimen/bottom_sheet_divider_bottom_margin"
+        android:layout_marginTop="@dimen/bottom_sheet_divider_top_margin"
+        android:background="?android:attr/dividerVertical"
+        android:visibility="gone"/>
+
+</LinearLayout>
