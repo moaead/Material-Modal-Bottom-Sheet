@@ -1,5 +1,10 @@
 package com.shihabapps.modalbottomsheet;
 
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,12 +18,22 @@ public class BottomSheetRecyclerAdapter extends RecyclerView.Adapter<BottomSheet
     private final int mItemResourceId;
     private final List<BottomSheetItem> mBottomSheetItems;
     private final BottomSheetItemOnClickListener mOnClickListener;
+    private final Context mContext;
 
-    public BottomSheetRecyclerAdapter(List<BottomSheetItem> bottomSheetItems, int itemResourceId, BottomSheetItemOnClickListener onClickListener) {
+    public BottomSheetRecyclerAdapter(Context context, List<BottomSheetItem> bottomSheetItems, int itemResourceId, BottomSheetItemOnClickListener onClickListener) {
+        mContext = context;
         mBottomSheetItems = bottomSheetItems;
         mItemResourceId = itemResourceId;
         mOnClickListener = onClickListener;
     }
+
+    public Drawable getDrawableWithTint(int drawableResource, int color) {
+        Drawable drawable = ContextCompat.getDrawable(mContext, drawableResource).mutate();
+        final Drawable wrappedDrawable = DrawableCompat.wrap(drawable);
+        DrawableCompat.setTintList(wrappedDrawable, ColorStateList.valueOf(color));
+        return wrappedDrawable;
+    }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -32,13 +47,17 @@ public class BottomSheetRecyclerAdapter extends RecyclerView.Adapter<BottomSheet
     public void onBindViewHolder(BottomSheetRecyclerAdapter.ViewHolder holder, int position) {
         BottomSheetItem bottomSheetItem = mBottomSheetItems.get(position);
         holder.mTextView.setText(bottomSheetItem.getTitle());
-        if (bottomSheetItem.getImage() != null) {
-            holder.mImageView.setImageDrawable(bottomSheetItem.getImage());
+        if (bottomSheetItem.getImage() != 0) {
+            if (bottomSheetItem.getImageTintColor() != null) {
+                holder.mImageView.setImageDrawable(getDrawableWithTint(bottomSheetItem.getImage(), bottomSheetItem.getImageTintColor()));
+            } else {
+                holder.mImageView.setImageResource(bottomSheetItem.getImage());
+            }
         }
         if (bottomSheetItem.isGroup()) {
             holder.mDividerView.setVisibility(View.VISIBLE);
         }
-        holder.bind(bottomSheetItem, mOnClickListener);
+        holder.bind(position, mOnClickListener);
     }
 
     @Override
@@ -58,11 +77,11 @@ public class BottomSheetRecyclerAdapter extends RecyclerView.Adapter<BottomSheet
             mDividerView = itemView.findViewById(R.id.bottom_sheet_single_title_divider_view);
         }
 
-        public void bind(final BottomSheetItem item, final BottomSheetItemOnClickListener onClickListener) {
-            itemView.setOnClickListener(new View.OnClickListener() {
+        public void bind(final int position, final BottomSheetItemOnClickListener onClickListener) {
+            itemView.findViewById(R.id.bottom_sheet_single_image_and_text).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onClickListener.onClick(item.getId(), item.getTitle());
+                    onClickListener.onClick(position);
                 }
             });
         }
