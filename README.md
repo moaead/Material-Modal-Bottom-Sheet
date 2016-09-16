@@ -23,12 +23,22 @@ Getting Started
 ```java
 BottomSheet.Builder bottomSheetBuilder = new BottomSheet.Builder(MainActivity.this);
 bottomSheetBuilder.setTitle("Open in");
-bottomSheetBuilder.setMenu(R.menu.fragment_menu);
-bottomSheetBuilder.setOrientation(BottomSheet.Builder.HORIZONTAL);
+final ArrayList<BottomSheetItem> items = new ArrayList<>();
+
+items.add(new BottomSheetItem("Share", R.drawable.ic_share_black_24dp, 0, false, Color.RED));
+items.add(new BottomSheetItem("Share", R.drawable.ic_share_black_24dp, 0, false, Color.GREEN));
+items.add(new BottomSheetItem("Share", R.drawable.ic_share_black_24dp, 0, false, Color.YELLOW));
+items.add(new BottomSheetItem("Share", R.drawable.ic_share_black_24dp, 0, false, Color.BLUE));
+items.add(new BottomSheetItem("Share", R.drawable.ic_share_black_24dp, 0, false, ContextCompat.getColor(MainActivity.this, R.color.colorPrimary)));
+items.add(new BottomSheetItem("ShareAbc", R.drawable.ic_share_black_24dp, 0, false));
+
+bottomSheetBuilder.setItems(items);
+bottomSheetBuilder.setOrientation(BottomSheet.Builder.VERTICAL);
 bottomSheetBuilder.setOnClickHandler(new BottomSheetItemOnClickListener() {
     @Override
-    public void onClick(int id, String title) {
-
+    public void onClick(int position) {
+        String title = items.get(position).getTitle();
+        Toast.makeText(MainActivity.this, title, Toast.LENGTH_SHORT).show();
     }
 });
 mBottomSheet = bottomSheetBuilder.create();
